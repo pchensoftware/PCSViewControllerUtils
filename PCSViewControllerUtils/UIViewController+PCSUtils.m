@@ -7,16 +7,16 @@
 #import "UIViewController+PCSUtils.h"
 #import <objc/runtime.h>
 
-#define kPCSUtilsViewControllerDidAppearBefore "kPCSUtilsViewControllerDidAppearBefore"
+#define kPCSUtilsViewControllerHasAppeared "kPCSUtilsViewControllerHasAppeared"
 
 @implementation UIViewController (PCSUtils)
 
 - (BOOL)controllerHasAppeared {
-   return [objc_getAssociatedObject(self, kPCSUtilsViewControllerDidAppearBefore) boolValue];
+   return [objc_getAssociatedObject(self, kPCSUtilsViewControllerHasAppeared) boolValue];
 }
 
 - (void)setControllerHasAppeared:(BOOL)controllerHasAppeared {
-   objc_setAssociatedObject(self, kPCSUtilsViewControllerDidAppearBefore, @(controllerHasAppeared), OBJC_ASSOCIATION_COPY_NONATOMIC);
+   objc_setAssociatedObject(self, kPCSUtilsViewControllerHasAppeared, @(controllerHasAppeared), OBJC_ASSOCIATION_COPY_NONATOMIC);
 }
 
 - (void)dismissOrPopController {
